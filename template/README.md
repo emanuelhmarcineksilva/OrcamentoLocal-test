@@ -1,11 +1,10 @@
 # Calculadora com testes (Mocha + Chai)
 
-Padrão de 3 arquivos: a **mesma** lógica roda no navegador (`index.html`) e nos testes (`test2.js`).
+Projeto só de terminal: a lógica fica em `calculadora.js` e os testes em `test2.js`, rodados com Mocha.
 
 ```
-funcionalidadeNotacao/
-├── calculadora.js   # lógica (classe Cliente) + função ligada ao HTML
-├── index.html       # tela que usa a calculadora no navegador
+template/
+├── calculadora.js   # lógica (classe Cliente)
 └── test2.js         # testes com Mocha + Chai
 ```
 
@@ -37,7 +36,7 @@ Em `package.json`, deixe o script de teste assim:
 
 ```json
 "scripts": {
-  "test": "mocha funcionalidadeNotacao/test2.js"
+  "test": "mocha template/test2.js"
 }
 ```
 
@@ -45,7 +44,7 @@ Em `package.json`, deixe o script de teste assim:
 
 ### `calculadora.js`: a lógica
 
-A regra de negócio fica numa classe, sem depender do HTML:
+A regra de negócio fica numa classe, que é exportada para os testes:
 
 ```js
 class Cliente {
@@ -62,45 +61,11 @@ class Cliente {
     return valor;
   }
 }
+
+module.exports = { Cliente };
 ```
 
-Depois vem a parte que conversa com a página (lê o input e escreve o resultado):
-
-```js
-cliente = new Cliente();
-function simularCalculo() {
-  valor = document.getElementById("valor").value;
-  resultado = cliente.realizarCompra(valor);
-  resultadoTexto = document.getElementById("resultado");
-  resultadoTexto.innerText = "Subtotal: " + resultado;
-}
-```
-
-E no final vem o truque que deixa o mesmo arquivo funcionar nos dois lugares:
-
-```js
-if (typeof module !== 'undefined') {
-  module.exports = { Cliente };
-}
-```
-
-- No **navegador** `module` não existe, então o `if` é ignorado.
-- No **Node** (testes) `module` existe, então a classe é exportada para o `require`.
-
-### `index.html`: a tela
-
-Carrega o `calculadora.js` com `<script>`, e o botão chama `simularCalculo()`:
-
-```html
-<label for="valor">Valor:</label>
-<input type="number" id="valor">
-<button onclick="simularCalculo()">Realizar Compra</button>
-<h1 id="resultado"></h1>
-
-<script src="calculadora.js"></script>
-```
-
-Para usar, abra o `index.html` no navegador (duplo clique no arquivo).
+O `module.exports` é o que permite fazer `require('./calculadora.js')` no teste.
 
 ### `test2.js`: os testes
 
@@ -134,9 +99,9 @@ describe('Teste compra cliente', () => {
 ## 4. Rodar os testes
 
 ```bash
-npm test                                    # usa o script do package.json
-npx mocha funcionalidadeNotacao/test2.js    # roda um arquivo direto
-npx mocha --watch funcionalidadeNotacao/test2.js   # roda de novo a cada alteração
+npm test                              # usa o script do package.json
+npx mocha template/test2.js           # roda um arquivo direto
+npx mocha --watch template/test2.js   # roda de novo a cada alteração
 ```
 
 Saída esperada:
@@ -154,6 +119,5 @@ Saída esperada:
 | Erro | Causa / solução |
 |------|-----------------|
 | `Cannot find module 'chai'` | Rode `npm i -D mocha chai` na pasta do `package.json`. |
-| `Cliente is not a constructor` | Falta o bloco `module.exports` no fim do `calculadora.js`. |
+| `Cliente is not a constructor` | Falta o `module.exports = { Cliente };` no fim do `calculadora.js`. |
 | `ERR_REQUIRE_ESM` | Seu Node é antigo (Chai 6 precisa de Node 22+). Atualize o Node. |
-| `document is not defined` | O teste chamou `simularCalculo()`. Teste só a classe, não a parte do HTML. |

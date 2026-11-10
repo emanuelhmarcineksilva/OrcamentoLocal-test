@@ -12,14 +12,5 @@ class Cliente{
     return valor;
   }
 }
-cliente = new Cliente();
-function simularCalculo() {
-  valor = document.getElementById("valor").value;
-  resultado = cliente.realizarCompra(valor);
-  resultadoTexto = document.getElementById("resultado");
-  resultadoTexto.innerText = "Subtotal: " + resultado;
-}
 
-if (typeof module !== 'undefined') {
-  module.exports = { Cliente };
-}
+module.exports = { Cliente };
