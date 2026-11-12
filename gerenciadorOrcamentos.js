@@ -1,28 +1,29 @@
 const { Orcamento } = require('./orcamento.js');
 class GerenciadorOrcamentos{
-  #lista_orcamentos;
+  lista_orcamentos;
   constructor() {
-    this.#lista_orcamentos = [];
+    this.lista_orcamentos = [];
   }
-  criarOrcamento(titulo) {
-    if (titulo == "") {
+  criarOrcamento(nome) {
+    if (nome == "") {
       return "O nome do orçamento é obrigatório!";
     }
-    if (this.#lista_orcamentos.length == 0) {
-      const orcamento = new Orcamento(titulo); 
-      this.#lista_orcamentos.push(orcamento);
+    if (this.lista_orcamentos.length == 0) {
+      const orcamento = new Orcamento(nome); 
+      this.lista_orcamentos.push(orcamento);
       return orcamento
    } 
     else {
-      this.#lista_orcamentos.forEach(orcamento => {
-        if (orcamento.titulo == titulo) {
+      for (const orcamento of this.lista_orcamentos) {
+        if (orcamento.nome == nome) {
           return "O nome do orçamento deve ser único!";
-        } 
-      });
-      const orcamento = new Orcamento(titulo); 
-   }
+        }
+      }
+      const orcamento = new Orcamento(nome);
+      this.lista_orcamentos.push(orcamento);
+      return orcamento;
+    }
   }
-  this.#lista_orcamentos.push(orcamento);
 }
 
 module.exports = { GerenciadorOrcamentos };

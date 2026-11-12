@@ -1,10 +1,11 @@
 class Orcamento{
-  #titulo;
-  #meta;
-  #itens;
-  constructor(titulo) {
-    this.#titulo = titulo;
-    this.#meta = null;
+  nome;
+  meta;
+  itens;
+  constructor(nome) {
+    this.nome = nome;
+    this.meta = null;
+    this.itens = [];
   }
   
 }
