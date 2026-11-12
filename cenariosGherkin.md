@@ -94,9 +94,9 @@ Funcionalidade: Criar item do orçamento
     Quando eu criar um orçamento com nome "Cama-elastica puc", valor '50.000', quantidade "60", categoria "Festa"
     Então um novo orçamento com o valor de 50.000 é criado
 
-  Cenário: (exceção) Criar item do orçamento com valor invalido
-    Dado que não exista um orçamento chamado "Cama-elastica puc"
-    Quando eu criar um orçamento com nome "Cama-elastica puc", valor '-50.000', quantidade "60", categoria "Festa"
+  Cenário: (exceção) Impedir criar um item do orçamento com valor invalido
+    Dado que não exista um orçamento chamado "Cama-elastica"
+    Quando eu criar um item do orçamento com nome "Cama-elastica", valor '-50.000', quantidade "60", categoria "Festa"
     Então deve ser retornado uma mensagem "O campo valor não pode conter valores nagativos!" 
 ```
 
