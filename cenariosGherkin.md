@@ -57,6 +57,10 @@ Funcionalidade: Deletar orçamento
     E o orçamento "Cozinha deve continuar existindo" 
 
 
+  Cenário: (exceção) Deletar orçamento não existente 
+    Dado que existem os orçamentos "Projetores puc" e "Cozinha" 
+    Quando eu deletar o orcamento chamado "Transportadora"
+    Então eu devo receber a mensagem "Orçamento não encontrado
 ```
 
 ---
