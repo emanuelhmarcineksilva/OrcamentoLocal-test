@@ -25,7 +25,7 @@ Teste: `testes/criarOrcamento.test.js`
 Funcionalidade: Criar orçamento
 
   Cenário: (sucesso) Criar orçamento com nome válido 
-    Dado que não existe nenhum orçamento em progresso 
+    Dado que não existe nenhum orçamento existente chamado "Projetores puc" 
     Quando eu criar um orçamento chamado "Projetores puc" 
     Então o orçamento "Projetores puc" ser criado 
     E o orçamento deve estar sem itens
