@@ -232,4 +232,4 @@ Funcionalidade: Filtrar itens por categoria
     Dado que a categoria selecionada não possui nenhum item
     Quando o usuário selecionar "Buscar"
     Então deve ser retornada a mensagem "Não existe nenhum item com essa categoria"
-```
+``` 

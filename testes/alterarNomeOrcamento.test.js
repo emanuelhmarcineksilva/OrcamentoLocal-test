@@ -27,5 +27,6 @@ describe('Alterar nome do orçamento', () => {
     const resultado = gerenciador.alterarNomeOrcamento('Projetores puc', '');
     expect(resultado).to.equal('O nome do orçamento é obrigatório!');
   });
+  
 
 });
