@@ -12,14 +12,14 @@ class GerenciadorItemOrcamento {
     }
     return new ItemOrcamento(nomeItem, valor, quantidade, categoria);
   }
-    editarItemOrcamento(orcamento, nomeItem, novoNome, novoValor, novaQuantidade, novaCategoria) {
-    for (let i = 0; i < orcamento.itens.length; i++) {
-      if (orcamento.itens[i].nome == nomeItem) {
-        orcamento.itens[i].nome = novoNome;
-        orcamento.itens[i].valor = novoValor;
-        orcamento.itens[i].quantidade = novaQuantidade;
-        orcamento.itens[i].categoria = novaCategoria;
-        return orcamento.itens[i];
+   editarItemOrcamento(orcamento, nomeItem, novoNome, novoValor, novaQuantidade, novaCategoria) {
+    for (const item of orcamento.itens) {
+      if (item.nome == nomeItem) {
+        item.nome = novoNome;
+        item.valor = novoValor;
+        item.quantidade = novaQuantidade;
+        item.categoria = novaCategoria;
+        return item;
       }
     }
   }
