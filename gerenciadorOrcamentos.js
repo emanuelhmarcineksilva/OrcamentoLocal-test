@@ -24,6 +24,16 @@ class GerenciadorOrcamentos{
       return orcamento;
     }
   }
+  deletarOrcamento(nome) {
+    for (let i = 0; i < this.lista_orcamentos.length; i++) {
+      if (this.lista_orcamentos[i].nome == nome) {
+        this.lista_orcamentos.splice(i, 1);
+        return;
+      }
+    }
+    return;
+  }
+
 }
 
 module.exports = { GerenciadorOrcamentos };
