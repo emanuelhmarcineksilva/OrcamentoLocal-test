@@ -205,16 +205,9 @@ Teste: `testes/progressoMeta.test.js`
 Funcionalidade: Visualizar progresso da meta
 
   Cenário: (sucesso) Visualizar progresso da meta quando não estiver visível
-    Dado que o orçamento "Projetores PUC" possui sua meta de 800 reais e um progresso de 400 reais não visível
+    Dado que o orçamento "Projetores PUC" possui sua meta de 800 reais e existe um item orcamento de 400 reais existente
     Quando o usuário enviar "Ver progresso"
-    Então o progresso da meta será exibido
-
-  Cenário: (exceção) Impedir alteração na visualização quando já estiver visível
-    Dado que o orçamento "Projetores PUC" possui sua meta de 800 reais e um progresso de 400 reais visível
-    Quando o usuário enviar "Ver progresso"
-    Então deve ser retornada a mensagem "O progresso já está visível"
-
-
+    Então o progresso de 400 reais da meta será exibido 
 
 ```
 
@@ -227,12 +220,12 @@ Teste: `testes/filtrarCategoria.test.js`
 Funcionalidade: Filtrar itens por categoria
 
   Cenário: (sucesso) Filtrar itens por categoria com valor válido
-    Dado que a categoria "Festa" foi escolhida
+    Dado que existe um orcamento chamado "Bolas de volei" com "10" itens com a categoria "Esporte" 
     Quando o usuário chamar "Buscar"
-    Então os itens da categoria "Festa" devem ser exibidos
+    Então os itens da categoria "Esporte" devem ser exibidos
 
   Cenário: (exceção) Filtrar item por categoria sem resultados
-    Dado que a categoria "Festa" escolhida não possui nenhum item
+    Dado que existe um orcamento chamado "Bolas de volei" nao possui nenhum itens com a categoria "Esporte"
     Quando o usuário chamar "Buscar"
     Então deve ser retornada a mensagem "Não existe nenhum item com essa categoria"
 ``` 
