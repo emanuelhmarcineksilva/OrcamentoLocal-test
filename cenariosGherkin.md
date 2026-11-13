@@ -35,11 +35,6 @@ Funcionalidade: Criar orçamento
     Dado que eu não informei um nome de orçamento 
     Quando eu criar um orçamento 
     Então deve ser retornado uma mensagem "O nome do orçamento é obrigatório!" 
-
-  Cenário: (exceção) Impedir orçamento com nome já existente
-    Dado que já existe um orçamento chamado "Cozinha" 
-    Quando eu criar um orçamento chamado "Cozinha"
-    Então deve ser retornado uma mensagem "O nome do orçamento deve ser único!"
 ```
 
 ### Deletar orçamento
@@ -50,17 +45,15 @@ Teste: `testes/deletarOrcamento.test.js`
 # language: pt
 Funcionalidade: Deletar orçamento
 
-  Cenário: (sucesso) Deletar orçamento existente 
-    Dado que existem os orçamentos "Projetores puc" e "Cozinha"
-    Quando eu deletar o orçamento chamado "Projetores puc"
-    Então o orçamento "Projetores puc" não deve mais existir
-    E o orçamento "Cozinha deve continuar existindo" 
+  Cenário: (sucesso) ...
+    Dado ...
+    Quando ...
+    Então ...
 
-
-  Cenário: (exceção) Deletar orçamento não existente 
-    Dado que existem os orçamentos "Projetores puc" e "Cozinha" 
-    Quando eu deletar o orcamento chamado "Transportadora"
-    Então eu devo receber a mensagem "Orçamento não encontrado
+  Cenário: (exceção) ...
+    Dado ...
+    Quando ...
+    Então ...
 ```
 
 ---
@@ -203,15 +196,15 @@ Teste: `testes/progressoMeta.test.js`
 # language: pt
 Funcionalidade: Visualizar progresso da meta
 
-  Cenário: (sucesso) ...
-    Dado ...
-    Quando ...
-    Então ...
+  Cenário: (sucesso) Visualizar progresso da meta quando não estiver visível
+    Dado que o progresso da meta não está visível
+    Quando o usuário selecionar "Ver progresso"
+    Então o progresso da meta será exibido
 
-  Cenário: (exceção) ...
-    Dado ...
-    Quando ...
-    Então ...
+  Cenário: (exceção) Impedir alteração na visualização já estando visível
+    Dado que o progresso da meta está visível
+    Quando o usuário selecionar "Ver progresso"
+    Então deve ser retornada a mensagem "O progresso já está visível"
 ```
 
 ### Filtrar itens por categoria
@@ -222,13 +215,13 @@ Teste: `testes/filtrarCategoria.test.js`
 # language: pt
 Funcionalidade: Filtrar itens por categoria
 
-  Cenário: (sucesso) ...
-    Dado ...
-    Quando ...
-    Então ...
+  Cenário: (sucesso) Filtrar itens por categoria com valor válido
+    Dado que a categoria "Festa" foi selecionada
+    Quando o usuário selecionar "Buscar"
+    Então os itens da categoria "Festa" devem ser exibidos
 
-  Cenário: (exceção) ...
-    Dado ...
-    Quando ...
-    Então ...
+  Cenário: (exceção) Filtrar item por categoria sem resultados
+    Dado que a categoria selecionada não possui nenhum item
+    Quando o usuário selecionar "Buscar"
+    Então deve ser retornada a mensagem "Não existe nenhum item com essa categoria"
 ```
