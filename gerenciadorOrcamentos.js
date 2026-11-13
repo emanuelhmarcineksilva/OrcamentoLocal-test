@@ -24,6 +24,7 @@ class GerenciadorOrcamentos{
       return orcamento;
     }
   }
+
   deletarOrcamento(nome) {
     for (let i = 0; i < this.lista_orcamentos.length; i++) {
       if (this.lista_orcamentos[i].nome == nome) {
@@ -31,9 +32,9 @@ class GerenciadorOrcamentos{
         return;
       }
     }
-    return;
+    return "Orçamento não encontrado";
   }
 
-}
+  }
 
 module.exports = { GerenciadorOrcamentos };
