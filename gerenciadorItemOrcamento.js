@@ -22,6 +22,7 @@ class GerenciadorItemOrcamento {
         return item;
       }
     }
+    return 'Item não encontrado!';
   }
    deletarItemOrcamento(orcamento, nomeItem) {
     for (let i = 0; i < orcamento.itens.length; i++) {
