@@ -16,6 +16,7 @@ class GerenciadorItemOrcamento {
     for (let i = 0; i < orcamento.itens.length; i++) {
       if (orcamento.itens[i].nome == nomeItem) {
         orcamento.itens.splice(i, 1);
+        return;
       }
     }
   }
