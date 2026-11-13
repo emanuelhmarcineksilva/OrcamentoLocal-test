@@ -96,7 +96,7 @@ Teste: `testes/criarItemOrcamento.test.js`
 Funcionalidade: Criar item do orçamento
 
   Cenário: (sucesso) Criar item do orçamento com valor valido
-    Dado que não exista um orçamento chamado "Cama-elastica puc"
+    Dado que exista um orçamento chamado "Cama-elastica puc"
     Quando eu criar um orçamento com nome "Cama-elastica puc", valor '50.000', quantidade "60", categoria "Festa"
     Então um novo orçamento com o valor de 50.000 é criado
 
@@ -235,4 +235,4 @@ Funcionalidade: Filtrar itens por categoria
     Dado que a categoria "Festa" escolhida não possui nenhum item
     Quando o usuário chamar "Buscar"
     Então deve ser retornada a mensagem "Não existe nenhum item com essa categoria"
-```
+``` 

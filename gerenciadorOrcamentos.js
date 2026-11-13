@@ -35,6 +35,17 @@ class GerenciadorOrcamentos{
     return "Orçamento não encontrado";
   }
 
+  alterarNomeOrcamento(nomeAtual, novoNome) {
+    if (novoNome == "") {
+      return "O nome do orçamento é obrigatório!";
+    }
+    for (const orcamento of this.lista_orcamentos) {
+      if (orcamento.nome == nomeAtual) {
+        orcamento.nome = novoNome;
+        return orcamento;
+      }
+    }
   }
+}
 
 module.exports = { GerenciadorOrcamentos };
