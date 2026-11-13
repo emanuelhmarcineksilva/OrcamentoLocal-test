@@ -89,9 +89,9 @@ Funcionalidade: Alterar nome do orçamento
 
 ### Criar item do orçamento
 
-Teste: `testes/criarItem.test.js`
+Teste: `testes/criarItemOrcamento.test.js`
 
-```gherkin
+```gherkinAlterar nome do orçamento'
 # language: pt
 Funcionalidade: Criar item do orçamento
 
