@@ -19,6 +19,7 @@ class GerenciadorItemOrcamento {
         return;
       }
     }
+    return 'Item não encontrado!';
   }
 }
 
