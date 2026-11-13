@@ -24,6 +24,11 @@ class GerenciadorOrcamentos{
       return orcamento;
     }
   }
+
+  deletarOrcamento(nome) {
+    this.lista_orcamentos.shift();
+  }
+
 }
 
 module.exports = { GerenciadorOrcamentos };
