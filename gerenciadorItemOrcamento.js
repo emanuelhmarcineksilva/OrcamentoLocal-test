@@ -18,12 +18,8 @@ class GerenciadorItemOrcamento {
   }
 
   buscarItemOrcamento(orcamento, nomeItem) {
-    for (const item of orcamento.itens) {
-      if (item.nome == nomeItem) {
-        return item;
-      }
-    }
-    return 'Item não encontrado!';
+    const item = orcamento.itens.find((item) => item.nome === nomeItem);
+    return item ?? 'Item não encontrado!';
   }
    editarItemOrcamento(orcamento, nomeItem, novoNome, novoValor, novaQuantidade, novaCategoria) {
     for (const item of orcamento.itens) {
