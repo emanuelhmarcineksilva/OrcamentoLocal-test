@@ -16,6 +16,15 @@ class GerenciadorItemOrcamento {
   adicionarItemAorcamento(orcamento, itemOrcamento) {
     orcamento.itens.push(itemOrcamento);
   }
+
+  buscarItemOrcamento(orcamento, nomeItem) {
+    for (const item of orcamento.itens) {
+      if (item.nome == nomeItem) {
+        return item;
+      }
+    }
+    return 'Item não encontrado!';
+  }
    editarItemOrcamento(orcamento, nomeItem, novoNome, novoValor, novaQuantidade, novaCategoria) {
     for (const item of orcamento.itens) {
       if (item.nome == nomeItem) {

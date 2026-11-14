@@ -35,6 +35,13 @@ class GerenciadorOrcamentos{
     return "Orçamento não encontrado";
   }
 
+  adicionarMeta(orcamento, valor) {
+    if (valor <= 0) {
+      return 'O valor da meta deve ser maior que zero!';
+    }
+    orcamento.meta = valor;
+  }
+
   alterarNomeOrcamento(nomeAtual, novoNome) {
     if (novoNome == "") {
       return "O nome do orçamento é obrigatório!";
