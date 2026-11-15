@@ -16,6 +16,8 @@ async function menu() {
     console.log('6 - Ver itens de um orçamento');
     console.log('7 - Editar item');
     console.log('8 - Deletar item');
+    console.log('9 - Buscar item');
+    console.log('10 - Adicionar meta');
     console.log('0 - Sair');
     const opcao = await rl.question('Escolha: ');
 
@@ -31,7 +33,8 @@ async function menu() {
       }
     } else if (opcao == '2') {
       for (const orcamento of gerenciador.lista_orcamentos) {
-        console.log(`- ${orcamento.nome} (${orcamento.itens.length} itens)`);
+        const meta = orcamento.meta == null ? 'sem meta' : `meta R$ ${orcamento.meta}`;
+        console.log(`- ${orcamento.nome} (${orcamento.itens.length} itens, ${meta})`);
       }
     } else if (opcao == '3') {
       const nomeAtual = await rl.question('Nome atual: ');
@@ -52,7 +55,7 @@ async function menu() {
       } else {
         console.log('Orçamento deletado!');
       }
-    } else if (opcao >= '5' && opcao <= '8') {
+    } else if (['5', '6', '7', '8', '9', '10'].includes(opcao)) {
       const nomeOrcamento = await rl.question('Nome do orçamento: ');
       const orcamento = gerenciador.lista_orcamentos.find(o => o.nome == nomeOrcamento);
       if (!orcamento) {
@@ -85,13 +88,29 @@ async function menu() {
         } else {
           console.log('Item editado!');
         }
-      } else {
+      } else if (opcao == '8') {
         const nomeItem = await rl.question('Item a deletar: ');
         const resultado = gerenciadorItem.deletarItemOrcamento(orcamento, nomeItem);
         if (resultado) {
           console.log(resultado);
         } else {
           console.log('Item deletado!');
+        }
+      } else if (opcao == '9') {
+        const nomeItem = await rl.question('Item a buscar: ');
+        const item = gerenciadorItem.buscarItemOrcamento(orcamento, nomeItem);
+        if (typeof item == 'string') {
+          console.log(item);
+        } else {
+          console.log(`- ${item.nome} | R$ ${item.valor} | qtd ${item.quantidade} | ${item.categoria}`);
+        }
+      } else {
+        const valor = Number(await rl.question('Valor da meta: '));
+        const resultado = gerenciador.adicionarMeta(orcamento, valor);
+        if (typeof resultado == 'string') {
+          console.log(resultado);
+        } else {
+          console.log('Meta adicionada!');
         }
       }
     } else {
