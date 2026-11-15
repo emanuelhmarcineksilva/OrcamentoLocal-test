@@ -37,7 +37,7 @@ Funcionalidade: Criar orçamento
     Então deve ser retornado uma mensagem "O nome do orçamento é obrigatório!" 
 
   Cenário: (exceção) Impedir orçamento com nome já existente
-    Dado que já existe um orçamento chamado "Cozinha"
+    Dado que já existe um orçamento chamado "Cozinha" 
     Quando eu criar um orçamento chamado "Cozinha"
     Então deve ser retornado uma mensagem "O nome do orçamento deve ser único!"
 ```
@@ -50,16 +50,17 @@ Teste: `testes/deletarOrcamento.test.js`
 # language: pt
 Funcionalidade: Deletar orçamento
 
-  Cenário: (sucesso) Deletar orçamento existente
+  Cenário: (sucesso) Deletar orçamento existente 
     Dado que existem os orçamentos "Projetores puc" e "Cozinha"
     Quando eu deletar o orçamento chamado "Projetores puc"
     Então o orçamento "Projetores puc" não deve mais existir
-    E o orçamento "Cozinha" deve continuar existindo
+    E o orçamento "Cozinha deve continuar existindo" 
 
-  Cenário: (exceção) Deletar orçamento não existente
-    Dado que existem os orçamentos "Projetores puc" e "Cozinha"
-    Quando eu deletar o orçamento chamado "Transportadora"
-    Então eu devo receber a mensagem "Orçamento não encontrado"
+
+  Cenário: (exceção) Deletar orçamento não existente 
+    Dado que existem os orçamentos "Projetores puc" e "Cozinha" 
+    Quando eu deletar o orcamento chamado "Transportadora"
+    Então eu devo receber a mensagem "Orçamento não encontrado
 ```
 
 ---
