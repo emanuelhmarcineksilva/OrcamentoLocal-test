@@ -90,16 +90,16 @@ Funcionalidade: Alterar nome do orçamento
 
 ### Criar item do orçamento
 
-Teste: `testes/criarItem.test.js`
+Teste: `testes/criarItemOrcamento.test.js`
 
-```gherkin
+```gherkinAlterar nome do orçamento'
 # language: pt
 Funcionalidade: Criar item do orçamento
 
   Cenário: (sucesso) Criar item do orçamento com valor valido
-    Dado que não exista um orçamento chamado "Cama-elastica puc"
-    Quando eu criar um orçamento com nome "Cama-elastica puc", valor '50.000', quantidade "60", categoria "Festa"
-    Então um novo orçamento com o valor de 50.000 é criado
+    Dado que exista um orçamento chamado "Cama-elastica puc"
+    Quando eu criar um item do orçamento com nome "Cama-elastica puc", valor '50.000', quantidade "60", categoria "Festa"
+    Então um novo item do orçamento com o valor de 50.000 é criado
 
   Cenário: (exceção) Impedir criar um item do orçamento com valor invalido
     Dado que não exista um orçamento chamado "Cama-elastica"
@@ -119,15 +119,15 @@ Teste: `testes/editarItem.test.js`
 # language: pt
 Funcionalidade: Editar item do orçamento
 
-  Cenário: (sucesso) ...
-    Dado ...
-    Quando ...
-    Então ...
+Cenário: (sucesso) Editar um item existente
+    Dado um orçamento "Reforma da cozinha" com o item "Cimento" (valor 35, quantidade 10, categoria "Material")
+    Quando eu editar o item "Cimento" para nome "Cimento CP-II", valor 40, quantidade 20 e categoria "Estrutura"
+    Então o item deve ter nome "Cimento CP-II", valor 40, quantidade 20 e categoria "Estrutura"
 
-  Cenário: (exceção) ...
-    Dado ...
-    Quando ...
-    Então ...
+  Cenário: (exceção) Editar um item que não existe
+    Dado um orçamento "Reforma da cozinha" com o item "Cimento" (valor 35, quantidade 10, categoria "Material")
+    Quando eu tentar editar o item "Areia"
+    Então deve ser retornado o erro "Item não encontrado!"
 ```
 
 ### Deletar item do orçamento
@@ -138,15 +138,17 @@ Teste: `testes/deletarItem.test.js`
 # language: pt
 Funcionalidade: Deletar item do orçamento
 
-  Cenário: (sucesso) ...
-    Dado ...
-    Quando ...
-    Então ...
+Cenário: (sucesso) Remover um item existente
+    Dado um orçamento "Reforma da cozinha" com os itens "Cimento" (valor 35, quantidade 10) e "Tinta" (valor 120, quantidade 2)
+    Quando eu deletar o item "Cimento"
+    Então o orçamento deve ter apenas 1 item
+    E o item "Tinta" deve continuar no orçamento
 
-  Cenário: (exceção) ...
-    Dado ...
-    Quando ...
-    Então ...
+  Cenário: (exceção) Deletar um item que não existe
+    Dado um orçamento "Reforma da cozinha" com o item "Cimento" (valor 35, quantidade 10)
+    Quando eu tentar deletar o item "Areia"
+    Então deve ser retornado o erro "Item não encontrado!"
+    E o orçamento deve continuar com 1 item
 ```
 
 ---
@@ -204,14 +206,10 @@ Teste: `testes/progressoMeta.test.js`
 Funcionalidade: Visualizar progresso da meta
 
   Cenário: (sucesso) Visualizar progresso da meta quando não estiver visível
-    Dado que o progresso da meta não está visível
-    Quando o usuário selecionar "Ver progresso"
-    Então o progresso da meta será exibido
+    Dado que o orçamento "Projetores PUC" possui sua meta de 800 reais e existe um item orcamento de 400 reais existente
+    Quando o usuário enviar "Ver progresso"
+    Então o progresso de 400 reais da meta será exibido 
 
-  Cenário: (exceção) Impedir alteração na visualização já estando visível
-    Dado que o progresso da meta está visível
-    Quando o usuário selecionar "Ver progresso"
-    Então deve ser retornada a mensagem "O progresso já está visível"
 ```
 
 ### Filtrar itens por categoria
@@ -223,12 +221,12 @@ Teste: `testes/filtrarCategoria.test.js`
 Funcionalidade: Filtrar itens por categoria
 
   Cenário: (sucesso) Filtrar itens por categoria com valor válido
-    Dado que a categoria "Festa" foi selecionada
-    Quando o usuário selecionar "Buscar"
-    Então os itens da categoria "Festa" devem ser exibidos
+    Dado que existe um orcamento chamado "Bolas de volei" com "10" itens com a categoria "Esporte" 
+    Quando o usuário chamar "Buscar"
+    Então os itens da categoria "Esporte" devem ser exibidos
 
   Cenário: (exceção) Filtrar item por categoria sem resultados
-    Dado que a categoria selecionada não possui nenhum item
-    Quando o usuário selecionar "Buscar"
+    Dado que existe um orcamento chamado "Bolas de volei" nao possui nenhum itens com a categoria "Esporte"
+    Quando o usuário chamar "Buscar"
     Então deve ser retornada a mensagem "Não existe nenhum item com essa categoria"
-```
+``` 

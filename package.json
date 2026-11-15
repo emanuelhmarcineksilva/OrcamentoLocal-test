@@ -1,7 +1,7 @@
 {
   "name": "tesmaxxing2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sistema de Orçamento de Insumos, desenvolvido com **BDD** (cenários em Gherkin) e **TDD** (ciclo Red → Green → Refactor), testado com Mocha + Chai. Cada funcionalidade começa pelo cenário em Gherkin e só depois vai para os testes e o código (ver [seção 4](#4-o-ciclo-bdd--tdd)). Projeto só de terminal, no mesmo padrão do [template](template/README.md).",
   "main": "test.js",
   "scripts": {
     "test": "mocha testes"
@@ -13,5 +13,13 @@
   "devDependencies": {
     "chai": "^6.3.0",
     "mocha": "^12.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emanuelhmarcineksilva/OrcamentoLocal-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emanuelhmarcineksilva/OrcamentoLocal-test/issues"
+  },
+  "homepage": "https://github.com/emanuelhmarcineksilva/OrcamentoLocal-test#readme"
 }

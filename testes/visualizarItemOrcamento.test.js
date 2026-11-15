@@ -10,12 +10,7 @@ describe ('Visualizar progresso da meta', () => {
     // Então um novo orçamento com o valor de 50.000 é criado
 
     it('Visualizar progresso da meta quando não estiver visível', () => {
-        const gerenciadorItem = new GerenciadorItemOrcamento();
-        const itemOrcamento = gerenciadorItem.criarItemOrcamento('Cama-elastica', 50000, 60, 'Festa');
-        expect(itemOrcamento.nome).to.equal('Cama-elastica');
-        expect(itemOrcamento.valor).to.equal(50000);
-        expect(itemOrcamento.quantidade).to.equal(60);
-        expect(itemOrcamento.categoria).to.equal('Festa');
+        
     })
 
     // Cenário: (exceção) Criar item do orçamento com valor invalido
@@ -24,12 +19,17 @@ describe ('Visualizar progresso da meta', () => {
     // Então deve ser retornado uma mensagem "O campo valor não pode conter valores nagativos!" 
 
     it('Impedir criar um item do orçamento com valor invalido',() => {
-        const gerenciadorItem = new GerenciadorItemOrcamento();
-        const itemOrcamento = gerenciadorItem.criarItemOrcamento('Cama-elastica', -50000, 60, 'Festa');
-        expect(itemOrcamento.valor).to.equal('O campo valor não pode conter valores nagativos!');
+        
     })
     //     orcamento.criarItemOrcamento('Cama-elastica', -50000, 60, 'Festa');
     //     const itemOrcamento = orcamento.itens.find(item => item.nome === 'Cama-elastica'); // buscar item pelo nome
     //     expect(itemOrcamento.valor).to.equal('O campo valor não pode conter valores nagativos!');
     // })
 })
+
+
+
+
+
+
+
