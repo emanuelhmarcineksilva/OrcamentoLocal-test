@@ -22,8 +22,11 @@ class GerenciadorItemOrcamento {
     return item ?? 'Item não encontrado!';
   }
 
+  filtrarItensPorCategoria(orcamento, categoria) {
+    return orcamento.itens.filter((item) => item.categoria == categoria);
+  }
 
-   editarItemOrcamento(orcamento, nomeItem, novoNome, novoValor, novaQuantidade, novaCategoria) {
+  editarItemOrcamento(orcamento, nomeItem, novoNome, novoValor, novaQuantidade, novaCategoria) {
     for (const item of orcamento.itens) {
       if (item.nome == nomeItem) {
         item.nome = novoNome;

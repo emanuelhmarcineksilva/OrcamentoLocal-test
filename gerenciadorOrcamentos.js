@@ -55,6 +55,10 @@ class GerenciadorOrcamentos{
     }
   }
 
+  visualizarProgressoMeta(orcamento) {
+    return orcamento.itens.reduce(
+      (total, item) => total + item.valor * item.quantidade,0);
+  }
 
 }
 
